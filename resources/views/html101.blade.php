@@ -36,12 +36,10 @@
 </head>
 <body>
 
-    <div class="container">
-        <div class="form-container">
-            <h1>Workshop #HTML - FORM</h1>
-            
+@extends('templates.default')
+@section('content')
             <form action="#" method="POST" enctype="multipart/form-data">
-                
+
                 <div class="row mb-3">
                     <div class="col-md-2 d-flex align-items-center">
                         <label for="firstName" class="form-label mb-0">ชื่อ</label>
@@ -68,7 +66,7 @@
                         <input type="date" class="form-control" id="dob" name="dob">
                     </div>
                 </div>
-                
+
                 <div class="row mb-3">
                     <div class="col-md-2 d-flex align-items-center">
                         <label for="age" class="form-label mb-0">อายุ</label>
@@ -160,13 +158,22 @@
                 <div class="row">
                     <div class="col-md-10 offset-md-2 d-flex gap-2">
                         <button type="reset" class="btn btn-secondary px-4">Reset</button>
-                        <button type="submit" class="btn btn-primary px-4">Submit</button>
+                        <button type="submit" class="btn btn-primary px-4" onclick="Clickme()">Submit</button>
                     </div>
                 </div>
 
             </form>
-        </div>
-    </div>
+@endsection
 
+@push('scripts')
+    <script>
+
+        let Clickme = function() {
+            document.getElementById("firstName").value = "Ratrawe";
+            console.log(document.getElementById("firstName").value);
+        }
+    alert('Hello from HTML FORM Bootstrap Edition!');
+    </script>
+@endpush
 </body>
 </html>
