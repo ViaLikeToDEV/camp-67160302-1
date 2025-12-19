@@ -15,8 +15,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('html101');
-});
+})->name('home');
 
 Route::get('/se', function () {
     return view('templates.default');
 });
+
+Route::get('/nav', function () {
+    return view('components.navbar');
+});
+
+Route::get('/c', [App\Http\Controllers\MyController::class, 'myFunc']);
+Route::get('/d', [App\Http\Controllers\MyController::class, 'anotherFunc']);
+Route::get('/info', [App\Http\Controllers\MyController::class, 'info']);
+Route::post('/calculate', [App\Http\Controllers\MyController::class, 'calculate']);
+

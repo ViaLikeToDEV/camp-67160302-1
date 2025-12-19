@@ -12,9 +12,9 @@
         body {
             font-family: 'Prompt', sans-serif;
             background-color: #f8f9fa;
-            padding-top: 2rem;
-            padding-bottom: 2rem;
+
         }
+
         .form-container {
             background-color: white;
             padding: 2rem;
@@ -36,12 +36,12 @@
     @stack('style')
 </head>
 <body>
-
     <div class="container">
-        <h1>Called from default page</h1>
-        @yield('content')
+        <div class="form-container">
+            <h1>Called from default page</h1>
+            @yield('header')
+            @yield('content')
+        </div>
     </div>
-    @stack('scripts')
-
 </body>
 </html>

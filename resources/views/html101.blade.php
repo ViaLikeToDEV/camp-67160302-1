@@ -4,42 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Workshop #HTML - FORM (Bootstrap Edition)</title>
-    <!-- Bootstrap 5 CSS -->
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-    <!-- Google Fonts (Prompt for Thai) -->
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Prompt', sans-serif;
-            background-color: #f8f9fa;
-            padding-top: 2rem;
-            padding-bottom: 2rem;
-        }
-        .form-container {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 1rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        h1 {
-            font-weight: 600;
-            margin-bottom: 2rem;
-            text-align: center;
-            color: #212529;
-        }
-        .form-label {
-            font-weight: 500;
-        }
-    </style>
+
 </head>
 <body>
-
-@extends('templates.default')
-@section('content')
-            <form action="#" method="POST" enctype="multipart/form-data">
-
+<x-navbar />
+            @extends('templates.default')
+            @section('content')
+            <form>
                 <div class="row mb-3">
                     <div class="col-md-2 d-flex align-items-center">
                         <label for="firstName" class="form-label mb-0">ชื่อ</label>
@@ -158,7 +129,7 @@
                 <div class="row">
                     <div class="col-md-10 offset-md-2 d-flex gap-2">
                         <button type="reset" class="btn btn-secondary px-4">Reset</button>
-                        <button type="submit" class="btn btn-primary px-4" onclick="Clickme()">Submit</button>
+                        <button class="btn btn-primary px-4" onclick="Clickme()">Submit</button>
                     </div>
                 </div>
 
@@ -167,7 +138,6 @@
 
 @push('scripts')
     <script>
-
         let Clickme = function() {
             document.getElementById("firstName").value = "Ratrawe";
             console.log(document.getElementById("firstName").value);
