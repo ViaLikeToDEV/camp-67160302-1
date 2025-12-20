@@ -17,6 +17,7 @@
 
         .form-container {
             background-color: white;
+            margin-top: 2rem;
             padding: 2rem;
             border-radius: 1rem;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -43,5 +44,19 @@
             @yield('content')
         </div>
     </div>
+
+{{-- @push('scripts')
+    <script>
+        let Clickme = function() {
+            document.getElementById("firstName").value = "Ratrawe";
+            console.log(document.getElementById("firstName").value);
+        }
+    alert('Hello from HTML FORM Bootstrap Edition!');
+    </script>
+@endpush --}}
+@stack('scripts')
+
+@push('form-validation')
+@endpush
 </body>
 </html>

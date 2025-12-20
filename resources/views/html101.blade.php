@@ -135,15 +135,101 @@
 
             </form>
 @endsection
-
 @push('scripts')
     <script>
-        let Clickme = function() {
-            document.getElementById("firstName").value = "Ratrawe";
-            console.log(document.getElementById("firstName").value);
+    function Clickme() {
+        // --- 1. กลุ่ม Input ทั่วไป (Text, Date, Number, File, Textarea, Select) ---
+        // เอา ID ของ input ทั้งหมดมายัดใส่ Array นี้
+        // หมายเหตุ: favColor ปกติมันมีค่า Default selected อยู่แล้ว อาจจะไม่ต้องเช็คก็ได้ แต่ใส่ไว้ให้ครบตามขอ
+        const fieldIds = [
+            'firstName',
+            'lastName',
+            'dob',
+            'age',
+            'photo',
+            'address',
+            'favColor'
+        ];
+
+        let isValid = true;
+
+        // วนลูปเช็ค Input ทั่วไป
+        fieldIds.forEach(id => {
+            let element = document.getElementById(id);
+            if (!element) return; // กัน Error ถ้าหา ID ไม่เจอ
+
+            // เช็คว่าค่าว่างไหม (ใช้ trim ตัดช่องว่างหน้าหลัง)
+            if (element.value.trim() === "") {
+                element.classList.remove('is-valid');
+                element.classList.add('is-invalid');
+                isValid = false;
+            } else {
+                element.classList.remove('is-invalid');
+                element.classList.add('is-valid');
+            }
+        });
+
+        // --- 2. กลุ่ม Radio Button (ต้องเช็คเป็นกลุ่ม) ---
+
+        // 2.1 เช็คเพศ (Gender)
+        const genderMale = document.getElementById('genderMale');
+        const genderFemale = document.getElementById('genderFemale');
+
+        // เช็คว่าไม่มีอันไหนถูกเลือกเลยใช่ไหม?
+        if (!genderMale.checked && !genderFemale.checked) {
+            genderMale.classList.add('is-invalid');
+            genderFemale.classList.add('is-invalid');
+            isValid = false;
+        } else {
+            // ถ้าเลือกแล้ว ให้ลบแดงออก (ปกติ Radio เขาไม่ค่อยใส่เขียว is-valid กันนะ มันรก แต่ถ้าจะใส่ก็เพิ่มไป)
+            genderMale.classList.remove('is-invalid');
+            genderFemale.classList.remove('is-invalid');
         }
-    alert('Hello from HTML FORM Bootstrap Edition!');
-    </script>
+
+        // 2.2 เช็คแนวเพลง (Music Genre)
+        const musicLife = document.getElementById('musicLife');
+        const musicCountry = document.getElementById('musicCountry');
+        const musicOther = document.getElementById('musicOther');
+
+        if (!musicLife.checked && !musicCountry.checked && !musicOther.checked) {
+            musicLife.classList.add('is-invalid');
+            musicCountry.classList.add('is-invalid');
+            musicOther.classList.add('is-invalid');
+            isValid = false;
+        } else {
+            musicLife.classList.remove('is-invalid');
+            musicCountry.classList.remove('is-invalid');
+            musicOther.classList.remove('is-invalid');
+        }
+
+        // --- 3. กลุ่ม Checkbox (Consent) ---
+        const consent = document.getElementById('consent');
+        if (!consent.checked) {
+            consent.classList.add('is-invalid');
+            isValid = false;
+        } else {
+            consent.classList.remove('is-invalid');
+            // consent.classList.add('is-valid'); // อยากเขียวก็เปิดคอมเมนต์นี้
+        }
+
+        // --- สรุปผล ---
+        if (isValid) {
+            // ผ่านหมดทุกด่าน
+            // alert("ข้อมูลครบถ้วน พร้อมส่งจ้า!");
+
+            // ถ้าจะส่งฟอร์มจริงๆ ให้ใช้คำสั่งนี้:
+             document.querySelector('form').submit();
+        } else {
+            // alert("กรอกข้อมูลไม่ครบนะจ๊ะ ไปเช็คสีแดงๆ ดู");
+            // เลื่อนหน้าจอไปหาจุดที่ Error จุดแรก (UX ที่ดี)
+            const firstInvalid = document.querySelector('.is-invalid');
+            if (firstInvalid) {
+                firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+    }
+</script>
 @endpush
+
 </body>
 </html>

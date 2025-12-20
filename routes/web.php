@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('html101');
 })->name('home');
 
+Route::get('/2', function () {
+    return view('html102');
+});
+
 Route::get('/se', function () {
     return view('templates.default');
 });
@@ -29,4 +33,4 @@ Route::get('/c', [App\Http\Controllers\MyController::class, 'myFunc']);
 Route::get('/d', [App\Http\Controllers\MyController::class, 'anotherFunc']);
 Route::get('/info', [App\Http\Controllers\MyController::class, 'info']);
 Route::post('/calculate', [App\Http\Controllers\MyController::class, 'calculate']);
-
+Route::post('/save-user', [MyController::class, 'store']);
