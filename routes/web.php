@@ -29,8 +29,12 @@ Route::get('/nav', function () {
     return view('components.navbar');
 });
 
+Route::get('/nav', function () {
+    return view('components.navbar');
+});
+
 Route::get('/c', [App\Http\Controllers\MyController::class, 'myFunc']);
 Route::get('/d', [App\Http\Controllers\MyController::class, 'anotherFunc']);
 Route::get('/info', [App\Http\Controllers\MyController::class, 'info']);
 Route::post('/calculate', [App\Http\Controllers\MyController::class, 'calculate']);
-Route::post('/save-user', [MyController::class, 'store']);
+Route::post('/save-user', [App\Http\Controllers\MyController::class, 'store']);
