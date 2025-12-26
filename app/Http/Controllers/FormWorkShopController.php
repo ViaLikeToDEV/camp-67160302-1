@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class FormWorkShopController extends Controller
 {
-    function FormReceptor(Request $request) {
+    function store(Request $request) {
         $fname = $request->input('firstName');
         $lname = $request->input('lastName');
         $date_of_birth = $request->input('dob');

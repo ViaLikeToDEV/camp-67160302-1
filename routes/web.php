@@ -33,11 +33,12 @@ Route::get('/nav', function () {
     return view('components.navbar');
 });
 
-Route::get('/c', [App\Http\Controllers\MyController::class, 'myFunc']);
-Route::get('/d', [App\Http\Controllers\MyController::class, 'anotherFunc']);
+Route::get('/myFunc', [App\Http\Controllers\MyController::class, 'myFunc']);
+Route::get('/Another', [App\Http\Controllers\MyController::class, 'anotherFunc']);
 Route::get('/info', [App\Http\Controllers\MyController::class, 'info']);
 Route::post('/calculate', [App\Http\Controllers\MyController::class, 'calculate']);
 Route::post('/save-user', [App\Http\Controllers\MyController::class, 'store']);
-Route::post('/form-workshop', [App\Http\Controllers\FormWorkShopController::class, 'FormReceptor']);
+
+Route::post('/form-workshop', [App\Http\Controllers\FormWorkShopController::class, 'store']); //workshop form 1
 
 Route::resource('/flights', App\Http\Controllers\FlightController::class);
