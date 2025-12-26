@@ -10,7 +10,8 @@
 <x-navbar />
             @extends('templates.default')
             @section('content')
-            <form>
+            <form action="/form-workshop" method="post">
+                @csrf
                 <div class="row mb-3">
                     <div class="col-md-2 d-flex align-items-center">
                         <label for="firstName" class="form-label mb-0">ชื่อ</label>
@@ -146,7 +147,7 @@
             'lastName',
             'dob',
             'age',
-            'photo',
+            // 'photo',
             'address',
             'favColor'
         ];
@@ -214,10 +215,6 @@
 
         // --- สรุปผล ---
         if (isValid) {
-            // ผ่านหมดทุกด่าน
-            // alert("ข้อมูลครบถ้วน พร้อมส่งจ้า!");
-
-            // ถ้าจะส่งฟอร์มจริงๆ ให้ใช้คำสั่งนี้:
              document.querySelector('form').submit();
         } else {
             // alert("กรอกข้อมูลไม่ครบนะจ๊ะ ไปเช็คสีแดงๆ ดู");

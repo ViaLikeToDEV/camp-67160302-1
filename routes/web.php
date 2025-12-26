@@ -38,3 +38,6 @@ Route::get('/d', [App\Http\Controllers\MyController::class, 'anotherFunc']);
 Route::get('/info', [App\Http\Controllers\MyController::class, 'info']);
 Route::post('/calculate', [App\Http\Controllers\MyController::class, 'calculate']);
 Route::post('/save-user', [App\Http\Controllers\MyController::class, 'store']);
+Route::post('/form-workshop', [App\Http\Controllers\FormWorkShopController::class, 'FormReceptor']);
+
+Route::resource('/flights', App\Http\Controllers\FlightController::class);

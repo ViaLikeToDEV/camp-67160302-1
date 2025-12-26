@@ -1,0 +1,25 @@
+services:
+  db:
+    image: mysql:8.0  # หรือจะใช้ mysql:latest ก็ได้ แต่ระบุเวอร์ชันชัวร์กว่า
+    container_name: local-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root  # รหัสผ่าน root ตั้งง่ายๆ พอ ใช้ในเครื่องตัวเอง
+      MYSQL_DATABASE: camp-67160302-g1     # สร้าง Database เริ่มต้นให้ 1 อัน (แก้ชื่อได้)
+      MYSQL_USER: user           # สร้าง user ธรรมดา (Option)
+      MYSQL_PASSWORD: password   # รหัสผ่าน user (Option)
+    ports:
+      - "3306:3306" # port เครื่องเรา : port ใน docker
+    volumes:
+      - ./mysql-data:/var/lib/mysql # *สำคัญ* บรรทัดนี้คือการเซฟข้อมูลลงเครื่องจริง ถ้าไม่ใส่ ปิด Docker ข้อมูลหายหมดนะจ๊ะ
+
+  # แถม: ถ้าติดใช้ phpMyAdmin ก็เปิด comment ด้านล่างนี้เอา
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: local-pma
+    links:
+      - db
+    environment:
+      PMA_HOST: db
+    ports:
+      - "8080:80"

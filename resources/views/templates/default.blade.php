@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,28 +25,31 @@
             max-width: 800px;
             margin: 0 auto;
         }
+
         h1 {
             font-weight: 600;
             margin-bottom: 2rem;
             text-align: center;
             color: #212529;
         }
+
         .form-label {
             font-weight: 500;
         }
     </style>
     @stack('style')
 </head>
+
 <body>
     <div class="container">
         <div class="form-container">
-            <h1>Called from default page</h1>
+            {{-- <h1>Called from default page</h1> --}}
             @yield('header')
             @yield('content')
         </div>
     </div>
 
-{{-- @push('scripts')
+    {{-- @push('scripts')
     <script>
         let Clickme = function() {
             document.getElementById("firstName").value = "Ratrawe";
@@ -54,9 +58,10 @@
     alert('Hello from HTML FORM Bootstrap Edition!');
     </script>
 @endpush --}}
-@stack('scripts')
+    @stack('scripts')
 
-@push('form-validation')
-@endpush
+    @push('form-validation')
+    @endpush
 </body>
+
 </html>
