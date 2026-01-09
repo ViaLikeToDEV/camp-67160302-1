@@ -41,6 +41,7 @@
 </head>
 
 <body>
+    @include('components.navbar')
     <div class="container">
         <div class="form-container">
             {{-- <h1>Called from default page</h1> --}}

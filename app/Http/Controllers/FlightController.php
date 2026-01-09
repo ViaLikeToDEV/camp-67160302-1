@@ -14,7 +14,10 @@ class FlightController extends Controller
      */
     public function index()
     {
-        return view('flights.index');
+        $data['flights'] = Flight::all();
+
+
+        return view('flights.index', $data);
     }
 
     /**
@@ -67,7 +70,7 @@ class FlightController extends Controller
         $data['flight_update'] = Flight::find($id);
         $data['flights'] = Flight::all();
 
-        return view('flights.index', $data);
+        return view('flights.edit', $data);
     }
 
     /**
@@ -79,7 +82,14 @@ class FlightController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $flights = Flight::find($id);
+        $flights->name = $request->input('name');
+        $flights->airline = $request->input('airline');
+        $flights->number_of_seat = $request->input('number_of_seat');
+        $flights->price = $request->input('price');
+        $flights->save();
+
+        return redirect()->route('flights.index');
     }
 
     /**
@@ -90,6 +100,8 @@ class FlightController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $flights = Flight::find($id);
+        $flights->delete();
+        return redirect()->route('flights.index');
     }
 }

@@ -4,7 +4,7 @@
     <h1>
         Flight create
     </h1>
-    <form action="{{ url('flights') }}" method="post">
+    <form action="{{ url('/flights') }}" method="post">
         @csrf
         <label for="name">Name</label>
         <input class="form-control" type="text" name="name" id="name">
@@ -19,26 +19,6 @@
     <h1>
         Flight List
     </h1>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Airline</th>
-                <th>Number of Seat</th>
-                <th>Price</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{-- @foreach ($flights as $flight)
-                <tr>
-                    <td>{{ $flight->id }}</td>
-                    <td>{{ $flight->name }}</td>
-                    <td>{{ $flight->airline }}</td>
-                    <td>{{ $flight->number_of_seat }}</td>
-                    <td>{{ $flight->price }}</td>
-                </tr>
-            @endforeach --}}
-        </tbody>
-    </table>
+    @include('flights.table')
+
 @endsection

@@ -7,7 +7,6 @@
 
 </head>
 <body>
-<x-navbar />
             @extends('templates.default')
             @section('content')
             <form action="/form-workshop" method="post">

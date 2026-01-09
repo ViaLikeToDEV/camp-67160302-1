@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm mb-4">
     <div class="container">
         <a class="navbar-brand fw-bold text-primary" href="{{ url('/') }}">
-            MyLogo
+            Laravel
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,13 +16,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('about') ? 'active fw-bold' : '' }}" href="{{ url('/about') }}">
-                        About
+                    <a class="nav-link {{ Request::is('flights') ? 'active fw-bold' : '' }}" href="{{ url('/flights') }}">
+                        Flight
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('services') ? 'active fw-bold' : '' }}" href="{{ url('/services') }}">
-                        Services
+                    <a class="nav-link {{ Request::is('pokedexs') ? 'active fw-bold' : '' }}" href="{{ url('/pokedexs') }}">
+                        Pokedex
                     </a>
                 </li>
             </ul>

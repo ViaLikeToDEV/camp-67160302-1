@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,18 +22,6 @@ Route::get('/2', function () {
     return view('html102');
 });
 
-Route::get('/se', function () {
-    return view('templates.default');
-});
-
-Route::get('/nav', function () {
-    return view('components.navbar');
-});
-
-Route::get('/nav', function () {
-    return view('components.navbar');
-});
-
 Route::get('/myFunc', [App\Http\Controllers\MyController::class, 'myFunc']);
 Route::get('/Another', [App\Http\Controllers\MyController::class, 'anotherFunc']);
 Route::get('/info', [App\Http\Controllers\MyController::class, 'info']);
@@ -42,3 +31,4 @@ Route::post('/save-user', [App\Http\Controllers\MyController::class, 'store']);
 Route::post('/form-workshop', [App\Http\Controllers\FormWorkShopController::class, 'store']); //workshop form 1
 
 Route::resource('/flights', App\Http\Controllers\FlightController::class);
+Route::resource('/pokedexs', App\Http\Controllers\pokedexsController::class);
